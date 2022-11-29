@@ -1,0 +1,5 @@
+Simple implementation of grep in rust.  
+
+use -i for case insensitive
+use -s for case sensitive // default
+OR set IGNORE_CASE env var to make default as case insensitive
