@@ -14,7 +14,16 @@ impl Config {
         }
         let search_query = args[1].clone();
         let file_path = args[2].clone();
-        let ignore_case = env::var("IGNORE_CASE").is_ok();
+        let mut ignore_case = env::var("IGNORE_CASE").is_ok();
+        if args.len() > 3 {
+            for arg in &args[3..] {
+                match arg.as_str() {
+                    "-s" => ignore_case = false,
+                    "-i" => ignore_case = true,
+                    _ => (),
+                }
+            }
+        }
         Ok(Config {
             query: search_query,
             file_path,
